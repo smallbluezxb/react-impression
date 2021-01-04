@@ -1,11 +1,11 @@
-### 注意事项
+### 注意
 
 - 使用 Ico 组件需要手动在 HTML 页面中引入 CSS 文件：
 
 ```html
 <link
   rel="stylesheet"
-  href="https://at.alicdn.com/t/font_2010704_yzy647hi2ab.css"
+  href="https://at.alicdn.com/t/font_2010704_0skvm4f627s.css"
 />
 ```
 
@@ -43,46 +43,164 @@
 
 ```javascript
 const allIcoType = [
-  'info-circle',
-  'angle-left',
-  'angle-right',
   'angle-double-left',
   'angle-double-right',
-  'angle-up',
   'angle-down',
-  'times',
-  'check',
-  'check-bold',
-  'rotate-left',
-  'rotate-right',
-  'check-circle-o',
-  'times-circle-o',
-  'clock-o',
-  'pause-circle-o',
-  'smile-o',
-  'list',
+  'angle-left',
+  'angle-right',
+  'angle-up',
+  'apps',
+  'apps-o',
+  'badge',
+  'badge-o',
   'bars',
-  'search',
-  'plus',
-  'trash',
-  'upload',
-  'download',
-  'user',
+  'bell',
+  'bell-o',
+  'box',
+  'box-o',
+  'building',
+  'building-o',
   'calendar',
-  'bar-chart',
-  'circle-o',
-  'ellipsis-h',
+  'calendar-o',
+  'camera',
+  'camera-o',
+  'card',
+  'card-o',
   'caret-down',
   'caret-up',
-  'exclamation-circle',
-  'question-circle',
+  'chain',
+  'chart-bar',
+  'chart-line',
+  'chart-pie',
+  'chart-pie-o',
+  'chart-point',
+  'check',
+  'check-bold',
   'check-circle',
-  'times-circle',
+  'check-circle-o',
   'check-square',
-  'camera',
-  'map-marker',
+  'circle-o',
+  'clock',
+  'clock-o',
+  'cog',
+  'cog-o',
+  'comment',
+  'comment-o',
+  'copy',
+  'copy-o',
+  'cubes',
+  'cubes-o',
+  'download',
+  'earth',
+  'edit',
+  'ellipsis-h',
+  'envelope',
+  'envelope-o',
+  'exclamation-circle',
+  'exclamation-circle-o',
+  'exit',
+  'expand',
   'eye',
-  'file-text',
+  'eye-o',
+  'eye-slash',
+  'file',
+  'file-o',
+  'filter-o',
+  'flag',
+  'flag-o',
+  'floppy',
+  'floppy-o',
+  'fold-down',
+  'fold-left',
+  'fold-right',
+  'fold-up',
+  'folder',
+  'folder-o',
+  'grid',
+  'grid-o',
+  'group',
+  'group-o',
+  'heart',
+  'heart-o',
+  'home-o',
+  'info-circle',
+  'layers',
+  'layers-o',
+  'list',
+  'location',
+  'location-o',
+  'lock',
+  'lock-o',
+  'minus-circle',
+  'minus-circle-o',
+  'mobile',
+  'mobile-o',
+  'money-circle',
+  'money-circle-o',
+  'motorcycle',
+  'motorcycle-o',
+  'news',
+  'news-o',
+  'normal',
+  'normal-o',
+  'pause-circle-o',
+  'phone',
+  'phone-o',
+  'picture',
+  'picture-o',
+  'pin',
+  'pin-o',
+  'plus',
+  'plus-circle',
+  'plus-circle-o',
+  'power-off',
+  'print',
+  'print-o',
+  'question-circle',
+  'question-circle-o',
+  'rotate-left',
+  'rotate-right',
+  'sad',
+  'sad-o',
+  'search',
+  'send',
+  'send-o',
+  'share-o',
+  'shield',
+  'shield-o',
+  'shop',
+  'shop-o',
+  'sitemap',
+  'sitemap-o',
+  'smile',
+  'smile-o',
+  'stamp',
+  'stamp-o',
+  'star',
+  'star-o',
+  'tag',
+  'tag-o',
+  'times',
+  'times-circle',
+  'times-circle-o',
+  'trash',
+  'trash-o',
+  'unlock',
+  'unlock-o',
+  'upload',
+  'user',
+  'user-cap',
+  'user-cap-o',
+  'user-circle-o',
+  'user-o',
+  'user-suit',
+  'user-suit-o',
+  'user-tie',
+  'user-tie-o',
+  'van',
+  'van-o',
+  'water',
+  'water-o',
 ]
 const IcoList = () => {
   const [keyword, setKeyword] = React.useState('')
@@ -120,30 +238,34 @@ const IcoList = () => {
 
 #### 尺寸
 
-Ico 的尺寸包括：xs，sm，md，lg，xl。<br/>
-默认为 sm：16px。
+Ico 的尺寸包括：xs，sm(默认)，md，lg，xl。<br/>
 
 ```js
-<Row className="flex-items-bottom">
-  <Col col={1} className="text-center">
+<Row className="flex-items-bottom text-center">
+  <Col col={1}>
     <Ico type="smile-o" size="xs" />
     <div>xs</div>
+    <div>12px</div>
   </Col>
-  <Col col={1} className="text-center">
+  <Col col={1} className="text-danger">
     <Ico type="smile-o" size="sm" />
     <div>sm</div>
+    <div>16px</div>
   </Col>
-  <Col col={1} className="text-center">
+  <Col col={1}>
     <Ico type="smile-o" size="md" />
     <div>md</div>
+    <div>20px</div>
   </Col>
-  <Col col={1} className="text-center">
+  <Col col={1}>
     <Ico type="smile-o" size="lg" />
     <div>lg</div>
+    <div>32px</div>
   </Col>
-  <Col col={1} className="text-center">
+  <Col col={1}>
     <Ico type="smile-o" size="xl" />
     <div>xl</div>
+    <div>40px</div>
   </Col>
 </Row>
 ```
@@ -156,3 +278,9 @@ Ico 的尺寸包括：xs，sm，md，lg，xl。<br/>
 <Ico type='smile-o' style={{ fontSize: '30px', color: '#E64600' }} />
 <Ico type='smile-o' className='offset-l-lg text-warning' />
 ```
+
+### 变更记录
+
+v3.0.0
+
+- 新增 Ico 组件

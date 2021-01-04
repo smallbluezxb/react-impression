@@ -108,7 +108,7 @@ class InputExample extends React.Component {
 
 日期类型输入框有 5 种：年份、月份、日期、时间、秒。<br/>
 **clearable 属性**仅对日期类型输入框生效，clearable 为 true 时，鼠标悬停到输入框会出现清除图标，点击触发 onChange 事件，回传空字符串。<br/>
-更多用法请移步 [DatePicker 日期选择](#datepicker)。
+更多用法请移步 [DatePicker 日期选择](#/Data%20Entry/DatePicker)。
 
 ```js
 <Form>
@@ -138,7 +138,7 @@ class InputExample extends React.Component {
 **可搜索类型**
 
 可搜索类型命名上由于历史原因不够准确，实际表现是输入框为只读状态，接受 onClick 回调。<br/>
-带搜索功能的输入框请移步 [Search 搜索](#search)。
+带搜索功能的输入框请移步 [Search 搜索](#/Data%20Entry/Search)。
 
 ```js
 class Example extends React.Component {
@@ -182,57 +182,12 @@ class Example extends React.Component {
           <Modal
             size={this.state.size}
             isOpen={this.state.show}
-            onClose={this.handleToggleModalhandleToggleModal}
+            onClose={this.handleToggleModal}
+            showClose
           >
-            <ModalHeader>
-              <Button close onClick={this.handleToggleModal}>
-                &times;
-              </Button>
-              <h5 className="no-margin">搜索</h5>
-            </ModalHeader>
+            <ModalHeader>搜索</ModalHeader>
             <ModalBody>
-              <Row>
-                <Col col="2" className="text-right">
-                  <strong>华东：</strong>
-                </Col>
-                <Col col="10">
-                  <InlineSelect
-                    value={this.state.city.id}
-                    onChange={this.selectCityHandle}
-                  >
-                    <InlineSelectOption value="1">上海</InlineSelectOption>
-                    <InlineSelectOption value="2">苏州</InlineSelectOption>
-                    <InlineSelectOption value="3">杭州</InlineSelectOption>
-                    <InlineSelectOption value="4">嘉兴</InlineSelectOption>
-                    <InlineSelectOption value="5">绍兴</InlineSelectOption>
-                    <InlineSelectOption value="6">常州</InlineSelectOption>
-                    <InlineSelectOption value="7">千岛湖</InlineSelectOption>
-                    <InlineSelectOption value="8">昆山</InlineSelectOption>
-                    <InlineSelectOption value="9">合肥</InlineSelectOption>
-                  </InlineSelect>
-                </Col>
-              </Row>
-              <Row>
-                <Col col="2" className="text-right">
-                  <strong>华南：</strong>
-                </Col>
-                <Col col="10">
-                  <InlineSelect
-                    value={this.state.city.id}
-                    onChange={this.selectCityHandle}
-                  >
-                    <InlineSelectOption value="21">广州</InlineSelectOption>
-                    <InlineSelectOption value="22">深圳</InlineSelectOption>
-                    <InlineSelectOption value="23">东莞</InlineSelectOption>
-                    <InlineSelectOption value="24">佛山</InlineSelectOption>
-                    <InlineSelectOption value="25">厦门</InlineSelectOption>
-                    <InlineSelectOption value="26">福州</InlineSelectOption>
-                    <InlineSelectOption value="27">南昌</InlineSelectOption>
-                    <InlineSelectOption value="28">泉州</InlineSelectOption>
-                    <InlineSelectOption value="29">赣州</InlineSelectOption>
-                  </InlineSelect>
-                </Col>
-              </Row>
+              <p>内容&hellip;</p>
             </ModalBody>
             <ModalFooter>
               <Button theme="secondary" onClick={this.handleToggleModal}>
@@ -250,24 +205,12 @@ class Example extends React.Component {
 
 **文件类型**
 
+实际是 Upload 组件的二次封装，文件上传建议直接使用 [Upload 上传](#/Data%20Entry/Upload)。
+
 ```js
 <Row>
   <Col>
-    <Input type="file" style={{width: 464}} />
-  </Col>
-</Row>
-<Row>
-  <Col>
-    <Input
-      type="file"
-      placeholder="请选择要上传的证书图片"
-      style={{width: 464}}
-     />
-  </Col>
-</Row>
-<Row>
-  <Col>
-    <Input type="file" btnStyle="primary" style={{width: 464}} />
+    <Input type="file" />
   </Col>
 </Row>
 ```
@@ -276,7 +219,10 @@ class Example extends React.Component {
 
 v2.0.0
 
-- 新增 input-box-shadow-focus sass 变量
-- 新增 \$input-font-size-sm sass 变量
-- 新增 \$input-font-size-lg sass 变量
 - 修复 日期类型 Input 组件清除内容后，没有触发 onChange 事件的问题
+
+v3.0.0
+
+- 废弃 pill 属性
+- 新增 addonBefore 属性、addonAfter 属性，支持输入框前后增加附加内容
+- 新增 size 属性有效值：xs、md

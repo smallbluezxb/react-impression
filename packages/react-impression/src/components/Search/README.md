@@ -1,6 +1,6 @@
 ### 示例
 
-### 基本
+#### 基本
 
 **禁用**
 
@@ -8,14 +8,15 @@
 <Search disabled />
 ```
 
-### 取值类型
+#### 取值类型
 
-#### 注意事项
+**注意**
 
 > 1. **非受控**状态下，**不能**通过 ref 获取组件的值。
 > 2. **受控**状态下，传入的 **value 必须是一个对象**，且包含用于显示的字段，默认是 label。
+> 3. 点击清除搜索框，会调用 onSelect，input 模式参数为 ''，select 模式参数为 null。
 
-**输入和选中为值**
+**1、输入和选中为值（type: input）**
 
 此类型为搜索组件默认类型。<br/>
 **通过 onChange 回调获取搜索组件的值**，需要在回调中处理 keyword。
@@ -91,7 +92,7 @@ class Example extends React.Component {
 ;<Example />
 ```
 
-**仅选中为值**
+**2、仅选中为值（type: select）**
 
 **通过 onSelect 回调获取搜索组件的值**，需要在回调中处理选中的 item。
 
@@ -113,6 +114,7 @@ const fruitList = [
   { label: '栗子8', key: 9, name: 'Pear8' },
   { label: '栗子9', key: 10, name: 'Pear9' },
   { label: '栗子10', key: 11, name: 'Pear10' },
+  { label: '栗子11', key: 12, name: 'Pear11' },
 ]
 class Example extends React.Component {
   constructor() {
@@ -165,3 +167,15 @@ class Example extends React.Component {
 }
 ;<Example />
 ```
+
+#### 自定义样式
+
+```javascript
+<Search className="pull-right" style={{ width: '50%' }} />
+```
+
+### 变更记录
+
+v3.0.0
+
+- 新增 Search 组件

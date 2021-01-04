@@ -1,13 +1,17 @@
+### 说明
+
+> Nav 组件即将被废弃，可以使用 [Tabs 组件](#/Navigation/Tabs) 进行替换。
+
 ### 示例
 
 **Nav 组件** 与 **NavLink 组件**、**NavItem 组件**配合使用时，需要注意：
 
 1. Nav 组件 的**activeKey 属性**
-   * 只有**与 NavItem 组件 搭配**时有效
-   * 且 NavItem 组件** 必须有 eventKey 属性**
+   - 只有**与 NavItem 组件 搭配**时有效
+   - 且 NavItem 组件** 必须有 eventKey 属性**
 2. 以下情况需要开发者自行控制子项的选中状态：
-   * Nav 组件 与 **NavLink 组件 搭配**使用时
-   * Nav 组件 与**无 eventKey 属性的 NavItem 组件 搭配**使用时
+   - Nav 组件 与 **NavLink 组件 搭配**使用时
+   - Nav 组件 与**无 eventKey 属性的 NavItem 组件 搭配**使用时
 
 自行控制选中状态方法为：
 
@@ -15,7 +19,7 @@
 2. NavItem 组件 无 eventKey 属性通过**改变组件的 active 样式类**控制
 3. NavItem 组件 有 eventKey 属性通过**active 属性**控制
 
-Nav 组件可以用于实现侧边栏的菜单，具体用法参考 [Sidebar 组件](#sidebar)
+Nav 组件可以用于实现侧边栏的菜单，具体用法参考 [Sidebar 组件](#/Navigation/Sidebar)
 
 **基本用法**
 
@@ -88,34 +92,9 @@ initialState = {
 </Row>
 ```
 
-**NavLink 用法**
-
-```js
-<Nav>
-  <NavLink className="active">
-    <a>标题</a>
-  </NavLink>
-  <NavLink>
-    <a>长标题</a>
-  </NavLink>
-  <NavLink>
-    <span>标题很长</span>
-  </NavLink>
-  <NavLink>
-    <span>标题特别长</span>
-  </NavLink>
-  <NavLink>
-    <span>标题再长一点</span>
-  </NavLink>
-  <NavLink>
-    <span>标题还敢长点吗</span>
-  </NavLink>
-</Nav>
-```
-
 **变更记录**
 
 v2.0.0
 
-* 删除 type 属性的 pill 可选项，支持 tab,inline 属性值，默认为 inline
-* 将删除对 Nav.Item／Nav.Link／Nav.Title 写法的支持，请使用 NavItem／NavLink／NavTitle
+- 删除 type 属性的 pill 可选项，支持 tab,inline 属性值，默认为 inline
+- 将删除对 Nav.Item／Nav.Link／Nav.Title 写法的支持，请使用 NavItem／NavLink／NavTitle

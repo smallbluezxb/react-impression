@@ -1,5 +1,5 @@
 import classnames from 'classnames'
-import React from 'react'
+import React, { useEffect, forwardRef } from 'react'
 import PropTypes from 'prop-types'
 
 const propTypes = {
@@ -13,7 +13,7 @@ const propTypes = {
   children: PropTypes.node,
 }
 
-const NavLink = ({ children, className, ...others }) => {
+const NavLink = forwardRef(({ children, className, ...others }, ref) => {
   if (!children) {
     return children
   }
@@ -28,12 +28,16 @@ const NavLink = ({ children, className, ...others }) => {
 
   children = React.cloneElement(children, childrenProps)
 
+  useEffect(() => {
+    console.warn('ReactImpression: NavLink组件即将被废弃，请尽快替换！')
+  }, [])
+
   return (
-    <li {...others} className={classnames('nav-item', className)}>
+    <li {...others} className={classnames('nav-item', className)} ref={ref}>
       {children}
     </li>
   )
-}
+})
 
 NavLink.propTypes = propTypes
 export default NavLink

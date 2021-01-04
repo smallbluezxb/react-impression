@@ -295,6 +295,7 @@ export default class Input extends React.PureComponent {
       case 'date':
       case 'month':
       case 'year':
+      case 'dateTime':
         return (
           <Trigger
             showAction='none'
@@ -326,7 +327,7 @@ export default class Input extends React.PureComponent {
               style={style}
             >
               <Ico
-                type='calendar'
+                type='calendar-o'
                 className='dada-input-addon-before'
                 onClick={this.handleShowDatePicker}
               />
@@ -432,12 +433,9 @@ export default class Input extends React.PureComponent {
             ref='container'
             style={style}
           >
-            {addonBefore}
-            <Ico
-              type='search'
-              className='dada-input-addon-before'
-              onClick={onClick}
-            />
+            {addonBefore || (
+              <Ico type='search' className='dada-input-addon-before' />
+            )}
             <input
               {...others}
               type='text'

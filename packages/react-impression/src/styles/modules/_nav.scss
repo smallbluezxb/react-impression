@@ -5,14 +5,18 @@
 
 .nav-wrap {
   overflow-x: auto;
+
   &::-webkit-scrollbar {
     display: none;
   }
 }
+
 .nav {
-  padding-left: 0;
   margin-bottom: 0;
+  padding-left: 0;
   list-style: none;
+  color: $gray-darker;
+
   &.nav-inline {
     display: inline-block;
   }
@@ -30,8 +34,8 @@
     color: $nav-disabled-link-color;
 
     &:hover {
-      color: $nav-disabled-link-hover-color;
       cursor: not-allowed;
+      color: $nav-disabled-link-hover-color;
       background-color: $nav-disabled-link-hover-bg;
     }
   }
@@ -40,48 +44,60 @@
 // Nav normal
 
 .nav-normal {
-  border-bottom: $nav-border-width solid $nav-border-color;
-  height: rem(50px);
   box-sizing: border-box;
+  border-bottom: 1px solid $border-color;
+
   .nav-item {
     display: inline-block;
-    cursor: pointer;
-    background: #fff;
     padding: $nav-normal-padding;
     box-sizing: border-box;
-    transition: border-color 0.2s ease-in-out;
+    cursor: pointer;
+    transition: border-color .2s ease-in-out;
+    background: #FFFFFF;
+
+    &:not(:last-child) {
+      margin-right: rem(32px);
+    }
+
     &.active {
       color: $nav-link-active-color;
-      background-color: $nav-link-active-bg;
       border-bottom: $nav-active-border-width solid $nav-link-active-color;
+      background-color: $nav-link-active-bg;
     }
+
     &:hover {
       color: $nav-link-active-color;
     }
+
     &.disabled {
-      color: $nav-disabled-link-color;
       cursor: not-allowed;
+      color: $nav-disabled-link-color;
     }
   }
 }
+
 .nav-stacked {
   .nav-item {
     padding: $nav-stacked-padding;
-    color: $gray-dark;
     cursor: pointer;
+    transition: background-color .2s ease-in-out;
+    color: $gray-dark;
     background: $brand-pure;
-    transition: background-color 0.2s ease-in-out;
+
     &.active {
-      background: $nav-link-active-color;
       color: $brand-pure;
+      background: $nav-link-active-color;
     }
+
     &:hover {
-      background: $nav-link-active-color;
       color: $brand-pure;
+      background: $nav-link-active-color;
     }
+
     &.disabled {
-      color: $nav-disabled-link-color;
       cursor: not-allowed;
+      color: $nav-disabled-link-color;
+
       &:hover {
         background: $brand-pure;
       }
@@ -91,38 +107,41 @@
 
 .nav-card {
   .nav-item {
+    position: relative;
     display: inline-block;
+    padding: $nav-cards-link-padding;
+    overflow-y: visible;
     cursor: pointer;
-    border-top: $nav-border-width solid $nav-border-color;
-    border-left: $nav-border-width solid $nav-border-color;
-    border-bottom: $nav-border-width solid $nav-border-color;
-    padding: $nav-card-padding;
-    background: $gray-lighter;
-    color: $gray-dark;
-    transition: background-color 0.2s ease-in-out;
-    &.active {
-      background: $nav-link-active-bg;
-      color: $nav-link-active-color;
-      border-bottom: none;
-    }
+    border: $nav-cards-border;
+    border-bottom: none;
+    border-radius: $nav-cards-link-border-radius;
+    background-color: $nav-cards-item-bg;
+
+    &.active,
     &:hover {
-      background: $nav-link-active-bg;
-      color: $nav-link-active-color;
-      border-bottom: none;
+      color: $nav-cards-item-active-color;
     }
-    &.disabled {
+
+    &.active {
+      z-index: 3;
+      background-color: $nav-cards-item-active-bg;
+    }
+
+    .nav-link {
+      line-height: $nav-cards-link-lineheight;
+    }
+
+    &.disabled,
+    &.disabled:hover {
       color: $nav-disabled-link-color;
-      cursor: not-allowed;
-      &:hover {
-        background: $gray-lighter;
-        border-bottom: $nav-border-width solid $nav-border-color;
-      }
-    }
-    &:last-child {
-      border-right: $nav-border-width solid $nav-border-color;
     }
   }
+
+  .nav-item:not(:last-child) {
+    margin-right: rem(4px);
+  }
 }
+
 // Hide tabbable panes to start, show them when `.active`
 .tab-content {
   > .tab-pane {

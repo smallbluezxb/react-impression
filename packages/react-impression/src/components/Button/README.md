@@ -16,9 +16,7 @@
   </Col>
   <Col col="2">
     <CardBlock>
-      <Button theme="dashed" shape="circle">
-        虚线
-      </Button>
+      <Button theme="dashed">虚线</Button>
     </CardBlock>
   </Col>
   <Col col="2">
@@ -115,7 +113,7 @@
 
 **图标**
 
-icon 属性如果是 string 类型，只能是 [Ico 组件支持的 type](#ico)。<br/>
+icon 属性如果是 string 类型，只能是 [Ico 组件支持的 type](#/General/Ico)。<br/>
 除了使用内置图标库的图标，也可以传入自定义图标组件。
 
 ```javascript
@@ -127,6 +125,12 @@ icon 属性如果是 string 类型，只能是 [Ico 组件支持的 type](#ico)�
   <FormGroup>
     <label>自定义图标：</label>
     <Button icon={<span style={{ width: '16px', height: '16px' }}>A</span>} />
+  </FormGroup>
+  <FormGroup>
+    <label>图标位置：</label>
+    <Button icon="angle-down" iconPosition="right">
+      Dropdown
+    </Button>
   </FormGroup>
 </Form>
 ```
@@ -157,72 +161,70 @@ icon 属性如果是 string 类型，只能是 [Ico 组件支持的 type](#ico)�
 **块状按钮**
 
 ```js
-<div>
-  <Button theme="primary" block className="offset-b">
-    主要
-  </Button>
-  <Button theme="secondary" block className="offset-b">
-    次要
-  </Button>
-  <Button theme="dashed" block className="offset-b">
-    虚线
-  </Button>
-</div>
+<Button theme='primary' block className='offset-b'>
+  主要
+</Button>
+<Button theme='secondary' block className='offset-b'>
+  次要
+</Button>
+<Button theme='dashed' block className='offset-b'>
+  虚线
+</Button>
 ```
 
 **加载中 按钮**
 
 ```js
-<div>
-  <Row className="no-margin">
-    <Col col="2">
-      <CardBlock>
-        <Button theme="primary" loading>
-          主要
-        </Button>
-      </CardBlock>
-    </Col>
-    <Col col="2">
-      <CardBlock>
-        <Button theme="secondary" loading>
-          次要
-        </Button>
-      </CardBlock>
-    </Col>
-    <Col col="2">
-      <CardBlock>
-        <Button theme="dashed" loading>
-          虚线
-        </Button>
-      </CardBlock>
-    </Col>
-    <Col col="2">
-      <CardBlock>
-        <Button theme="text" loading>
-          文字
-        </Button>
-      </CardBlock>
-    </Col>
-    <Col col="2">
-      <CardBlock>
-        <Button icon="plus" loading>
-          文字
-        </Button>
-      </CardBlock>
-    </Col>
-    <Col col="2">
-      <CardBlock>
-        <Button icon="plus" loading />
-      </CardBlock>
-    </Col>
-  </Row>
-</div>
+<Row className="no-margin">
+  <Col col="2">
+    <CardBlock>
+      <Button theme="primary" loading>
+        主要
+      </Button>
+    </CardBlock>
+  </Col>
+  <Col col="2">
+    <CardBlock>
+      <Button theme="secondary" loading>
+        次要
+      </Button>
+    </CardBlock>
+  </Col>
+  <Col col="2">
+    <CardBlock>
+      <Button theme="dashed" loading>
+        虚线
+      </Button>
+    </CardBlock>
+  </Col>
+  <Col col="2">
+    <CardBlock>
+      <Button theme="text" loading>
+        文字
+      </Button>
+    </CardBlock>
+  </Col>
+  <Col col="2">
+    <CardBlock>
+      <Button icon="plus" loading>
+        文字
+      </Button>
+    </CardBlock>
+  </Col>
+  <Col col="2">
+    <CardBlock>
+      <Button icon="plus" loading />
+    </CardBlock>
+  </Col>
+</Row>
 ```
 
 ### 变更记录
 
-v2.0.0
+v3.0.0
 
-- 新增 btn-font-size sass 变量
-- 移除 btn-border-radius-lg sass 变量
-- 移除 btn-border-radius-sm sass 变量
+- 废弃 outline 属性、href 属性、close 属性
+- 新增 loading 属性，支持按钮加载中的状态
+- 新增 icon 属性、iconPosition 属性，支持添加按钮的图标
+- 新增 theme 属性有效值：text、dashed，废弃 default 类型的主题，请用 secondary 替代 default
+- 新增 shape 属性有效值：circle，废弃 pill 类型的形状

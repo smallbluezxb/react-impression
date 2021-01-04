@@ -8,23 +8,26 @@ import NavTitle from '../NavTitle'
 /**
  * 返回type映射的class
  * @param type
- * @returns {string}
+ * @param stacked
+ * @returns {string|*|string}
  */
 const getTypeClassMap = (type, stacked) => {
   if (stacked) return ''
   const map = {
     tab: 'nav-card',
+    block: 'nav-block',
   }
 
   return map[type] || 'nav-normal'
 }
 
-export default class Nav extends React.PureComponent {
+class Nav extends React.PureComponent {
   constructor(props, context) {
     super(props, context)
     this.state = {
       activeKey: this.props.activeKey,
     }
+    console.warn('ReactImpression: 建议使用 Tabs 组件替换 Nav 组件！')
   }
 
   static propTypes = {
@@ -134,3 +137,5 @@ export default class Nav extends React.PureComponent {
 Nav.Item = NavItem
 Nav.Link = NavLink
 Nav.Title = NavTitle
+
+export default Nav

@@ -1,84 +1,111 @@
-import classnames from 'classnames'
+import classNames from 'classnames'
 import React from 'react'
 import PropTypes from 'prop-types'
+import Ico from '../Ico'
 
-export default class Tag extends React.PureComponent {
-  static propTypes = {
-    /**
-     * 样式
-     */
-    theme: PropTypes.oneOf([
-      'default',
-      'primary',
-      'success',
-      'info',
-      'warning',
-      'danger',
-    ]),
+const Tag = React.forwardRef((props, ref) => {
+  const {
+    theme,
+    closable,
+    onClose,
+    shape,
+    outline,
+    children,
+    className,
+    size,
+    disabled,
+    ...others
+  } = props
 
-    /**
-     * 外边框样式
-     */
-    outline: PropTypes.bool,
+  const realSize = shape ? 'sm' : size
 
-    /**
-     * 标签形状
-     */
-    shape: PropTypes.oneOf(['pill']),
+  return (
+    <span
+      ref={ref}
+      className={classNames(
+        'dada-tag',
+        `dada-tag-${realSize}`,
+        {
+          [`dada-tag-outline-${theme}`]: outline,
+          [`dada-tag-${theme}`]: !outline,
+          [`dada-tag-${shape}`]: shape,
+          'dada-tag-disabled': disabled,
+        },
+        className
+      )}
+      {...others}
+    >
+      <span className='dada-tag-text'>{children}</span>
+      {closable && (
+        <Ico
+          className='dada-tag-close'
+          type='times'
+          size='xs'
+          onClick={e => {
+            !disabled && onClose && onClose(e)
+          }}
+        />
+      )}
+    </span>
+  )
+})
 
-    /**
-     * 是否可删除
-     */
-    closable: PropTypes.bool,
+Tag.propTypes = {
+  /**
+   * 样式
+   */
+  theme: PropTypes.oneOf([
+    'default',
+    'primary',
+    'success',
+    'info',
+    'warning',
+    'danger',
+  ]),
 
-    /**
-     * 删除回调
-     */
-    onClose: PropTypes.func,
+  /**
+   * 外边框样式
+   */
+  outline: PropTypes.bool,
 
-    /**
-     * 自定义样式
-     */
-    className: PropTypes.string,
+  /**
+   * 标签形状
+   */
+  shape: PropTypes.oneOf(['pill']),
 
-    /**
-     * 子组件
-     */
-    children: PropTypes.node,
-  }
+  /**
+   * 是否可删除
+   */
+  closable: PropTypes.bool,
 
-  static defaultProps = {
-    theme: 'primary',
-    closable: false,
-    outline: false,
-  }
+  /**
+   * 删除回调
+   */
+  onClose: PropTypes.func,
 
-  render() {
-    const {
-      theme,
-      closable,
-      onClose,
-      shape,
-      outline,
-      children,
-      className,
-      ...others
-    } = this.props
-    const tagStyle = outline ? `tag-outline-${theme}` : `tag-${theme}`
-    const tagShape = shape ? `tag-${shape}` : ''
+  /**
+   * 自定义样式
+   */
+  className: PropTypes.string,
 
-    return (
-      <span
-        {...others}
-        className={classnames('tag', tagStyle, tagShape, className)}
-      >
-        {children}
-        {closable && (
-          <span className='tag-close' onClick={onClose}>
-            &times;
-          </span>
-        )}
-      </span>
-    )
-  }
+  /**
+   * 子组件
+   */
+  children: PropTypes.node,
+  /**
+   * 尺寸
+   */
+  size: PropTypes.oneOf(['sm', 'md']),
+  /**
+   * 禁用
+   */
+  disabled: PropTypes.bool,
 }
+Tag.defaultProps = {
+  theme: 'primary',
+  closable: false,
+  outline: false,
+  size: 'sm',
+}
+
+export default Tag

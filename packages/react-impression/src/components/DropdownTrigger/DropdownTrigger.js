@@ -1,29 +1,22 @@
 import classnames from 'classnames'
 import React from 'react'
 import PropTypes from 'prop-types'
-import Ico from '../Ico'
 
 const DropdownTrigger = ({
   trigger,
   toggleMenu,
   className,
   children,
+  disabled,
   ...others
 }) => {
   let options = {}
-
+  disabled && (options.disabled = true)
   if (trigger === 'click') {
     options.onClick = toggleMenu
   }
 
-  children = React.cloneElement(
-    children,
-    options,
-    <span>
-      {children.props.children}
-      <Ico className='dropdown-caret' type='caret-down' />
-    </span>
-  )
+  children = React.cloneElement(children, options, children.props.children)
 
   return (
     <span {...others} className={classnames('dropdown-toggle', className)}>
